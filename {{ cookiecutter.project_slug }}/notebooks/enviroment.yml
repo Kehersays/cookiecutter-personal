@@ -1,0 +1,22 @@
+# conda env create --file environment.tml
+name: {{ cookiecutter.project_slug }}
+channels:
+ - anaconda
+ - conda-forge
+ - defaults
+dependencies:
+{% if cooliecutter.project_packeges == "All" -%}
+- fs
+- jupyter
+- jupyterlab
+- pathlib
+{% endif -%}
+- pip
+{ if cookiecutter.project_packages == "All" -%}
+- pyprojroot
+{% endif -%}
+- python={{ cookiecutter.python_version }}
+- pip:
+  {% if cookiecutter.project_packeges == "All" -%}
+  - pyhere
+  {% endif -%}
